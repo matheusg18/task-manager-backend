@@ -1,0 +1,19 @@
+{
+  "name": "task-manager-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.ts",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheusg18/task-manager-frontend.git"
+  },
+  "author": "Matheus Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matheusg18/task-manager-frontend/issues"
+  },
+  "homepage": "https://github.com/matheusg18/task-manager-frontend#readme"
+}
