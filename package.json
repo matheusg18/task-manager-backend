@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/matheusg18/task-manager-frontend/issues"
   },
-  "homepage": "https://github.com/matheusg18/task-manager-frontend#readme"
+  "homepage": "https://github.com/matheusg18/task-manager-frontend#readme",
+  "devDependencies": {
+    "typescript": "^4.6.4"
+  }
 }
