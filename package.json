@@ -2,7 +2,7 @@
   "name": "task-manager-frontend",
   "version": "1.0.0",
   "description": "",
-  "main": "server.ts",
+  "main": "src/server.ts",
   "scripts": {
     "test": ""
   },
