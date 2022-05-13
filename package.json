@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/server.ts",
   "scripts": {
+    "dev": "tsnd ./src/server.ts",
     "test": ""
   },
   "repository": {
