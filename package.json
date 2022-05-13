@@ -5,7 +5,7 @@
   "main": "src/server.ts",
   "scripts": {
     "dev": "tsnd ./src/server.ts",
-    "test": ""
+    "test": "jest"
   },
   "repository": {
     "type": "git",
