@@ -1,6 +1,6 @@
 export interface ITask {
   id: string;
   content: string;
-  createdAt: string;
+  createdAt: Date;
   status: 'PENDING' | 'IN_PROGRESS' | 'DONE';
 }
