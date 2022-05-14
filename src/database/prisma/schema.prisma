@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Task {
+  id        String     @id @default(uuid())
+  content   String
+  createdAt DateTime   @default(now()) @map("created_at")
+  status    TaskStatus @default(PENDING)
+
+  @@map("task")
+}
+
+enum TaskStatus {
+  PENDING
+  IN_PROGRESS
+  DONE
+}
