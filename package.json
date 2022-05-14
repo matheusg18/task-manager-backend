@@ -7,6 +7,9 @@
     "dev": "tsnd ./src/server.ts",
     "test": "jest"
   },
+  "prisma": {
+    "schema": "src/database/prisma/schema.prisma"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/matheusg18/task-manager-frontend.git"
