@@ -6,4 +6,8 @@ export default class TaskService {
   constructor(prisma: PrismaClient) {
     this.prisma = prisma;
   }
+
+  public async getAll() {
+    return this.prisma.task.findMany();
+  }
 }
