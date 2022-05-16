@@ -11,4 +11,8 @@ export default class TaskService {
   public async getAll(): Promise<ITask[]> {
     return this.prisma.task.findMany();
   }
+
+  public async create(content: string): Promise<ITask> {
+    return this.prisma.task.create({ data: { content } });
+  }
 }
