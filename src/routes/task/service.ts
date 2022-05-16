@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { ITask } from '../../interfaces';
 
 export default class TaskService {
   private readonly prisma: PrismaClient;
@@ -7,7 +8,7 @@ export default class TaskService {
     this.prisma = prisma;
   }
 
-  public async getAll() {
+  public async getAll(): Promise<ITask[]> {
     return this.prisma.task.findMany();
   }
 }
