@@ -21,12 +21,7 @@ services:
     ports:
       - 3001:3001
     environment:
-      - DB_USER=root
-      - DB_PASSWORD=password
-      - DB_HOST=task-manager-db
-      - DB_PORT=3306
-      - DB_NAME=task-manager
-      - DATABASE_URL=mysql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?schema=public
+      - DATABASE_URL=mysql://root:password@task-manager-db:3306/task-manager-test?schema=public
     healthcheck:
       test: ['CMD', 'lsof', '-t', '-i:3001']
       timeout: 10s
