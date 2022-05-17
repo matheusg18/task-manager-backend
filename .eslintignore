@@ -1,1 +1,3 @@
 jest.config.ts
+
+__tests__/@types
