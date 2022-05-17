@@ -5,7 +5,13 @@
   "main": "src/server.ts",
   "scripts": {
     "dev": "tsnd ./src/server.ts",
-    "test": "jest"
+    "test": "jest",
+    "db:reset:test": "DB_NAME=task-manager-test prisma migrate reset --force --skip-seed",
+    "test:unit": "npm test -- __tests__/unit",
+    "pretest:integration": "npm run db:reset:test",
+    "test:integration": "DB_NAME=task-manager-test npm test -- --runInBand __tests__/integration",
+    "pretest:coverage": "npm run db:reset:test",
+    "test:coverage": "DB_NAME=task-manager-test npm test -- --runInBand --collectCoverage"
   },
   "prisma": {
     "schema": "src/database/prisma/schema.prisma"
