@@ -4,6 +4,8 @@
   "description": "",
   "main": "src/server.ts",
   "scripts": {
+    "prestart": "tsc",
+    "start": "node ./dist/src/server.js",
     "dev": "tsnd ./src/server.ts",
     "test": "jest",
     "db:reset:test": "DB_NAME=task-manager-test prisma migrate reset --force --skip-seed",
@@ -11,7 +13,9 @@
     "pretest:integration": "npm run db:reset:test",
     "test:integration": "DB_NAME=task-manager-test npm test -- --runInBand __tests__/integration",
     "pretest:coverage": "npm run db:reset:test",
-    "test:coverage": "DB_NAME=task-manager-test npm test -- --runInBand --collectCoverage"
+    "test:coverage": "DB_NAME=task-manager-test npm test -- --runInBand --collectCoverage",
+    "compose:up": "docker-compose up --build -d",
+    "compose:down": "docker-compose down --rmi local --volumes --remove-orphans"
   },
   "prisma": {
     "schema": "src/database/prisma/schema.prisma"
