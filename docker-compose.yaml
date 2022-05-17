@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  task-manager-db:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    restart: 'always'
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      timeout: 10s
+      retries: 5
+    cap_add:
+      - SYS_NICE
+
+  task-manager-backend:
+    build: .
+    depends_on:
+      task-manager-db:
+        condition: service_healthy
+    ports:
+      - 3001:3001
+    environment:
+      - DB_USER=root
+      - DB_PASSWORD=password
+      - DB_HOST=task-manager-db
+      - DB_PORT=3306
+      - DB_NAME=task-manager
+      - DATABASE_URL=mysql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?schema=public
+    healthcheck:
+      test: ['CMD', 'lsof', '-t', '-i:3001']
+      timeout: 10s
+      retries: 5
