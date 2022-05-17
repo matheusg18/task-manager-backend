@@ -6,7 +6,7 @@
   "scripts": {
     "prestart": "tsc",
     "start": "node ./dist/src/server.js",
-    "dev": "tsnd ./src/server.ts",
+    "dev": "tsnd --exit-child ./src/server.ts",
     "test": "jest",
     "db:reset:test": "DB_NAME=task-manager-test prisma migrate reset --force --skip-seed",
     "test:unit": "npm test -- __tests__/unit",
