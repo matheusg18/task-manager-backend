@@ -1,5 +1,5 @@
 import { RequestHandler } from 'express';
-import { ITaskCreateRequest } from '../../interfaces/routes';
+import { ITaskCreateRequest, ITaskUpdateRequest } from '../../interfaces';
 import TaskService from './service';
 
 export default class TaskController {
@@ -20,5 +20,13 @@ export default class TaskController {
     const newTask = await this.taskService.create(content);
 
     res.status(201).json(newTask);
+  };
+
+  public update: RequestHandler = async (req, res) => {
+    const { id } = req.params;
+    const { content, status } = req.body as ITaskUpdateRequest;
+    const updatedTask = await this.taskService.update(id, { content, status });
+
+    res.status(200).json(updatedTask);
   };
 }
