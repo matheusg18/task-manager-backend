@@ -20,7 +20,7 @@ describe('TaskService getAll - unit test', () => {
   });
 
   afterAll(() => {
-    mockPrisma.mockRestore();
+    mockPrisma.mockReset();
   });
 
   it('should return a task list', async () => {

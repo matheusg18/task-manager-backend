@@ -18,7 +18,7 @@ describe('TaskService create - unit test', () => {
   });
 
   afterAll(() => {
-    mockPrisma.mockRestore();
+    mockPrisma.mockReset();
   });
 
   it('should return the created task', async () => {
