@@ -30,7 +30,6 @@ export default {
     '/node_modules/',
     '<rootDir>/src/database',
     '<rootDir>/src/interfaces',
-    '<rootDir>/src/app.ts',
     '<rootDir>/src/server.ts',
   ],
 
