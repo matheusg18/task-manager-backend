@@ -29,4 +29,11 @@ export default class TaskController {
 
     res.status(200).json(updatedTask);
   };
+
+  public exclude: RequestHandler = async (req, res) => {
+    const { id } = req.params;
+    await this.taskService.exclude(id);
+
+    res.status(204).end();
+  };
 }
