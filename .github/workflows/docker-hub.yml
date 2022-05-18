@@ -2,7 +2,7 @@ name: Push BackEnd Docker Image to DockerHub
 
 on:
   push:
-    branchs:
+    branches:
       - main
 
 jobs:
