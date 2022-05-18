@@ -1,0 +1,39 @@
+on: [pull_request]
+
+jobs:
+  eslint:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.2.0
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ESLint
+        run: npx eslint . --ext .ts
+
+  tests:
+    runs-on: ubuntu-20.04
+    needs: [eslint]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.2
+
+      - name: Docker Compose UP
+        run: docker-compose up --build -d
+
+      - name: Run unit tests
+        run: docker-compose exec -T task-manager-backend npm run test:unit
+
+      - name: Run integration tests
+        run: docker-compose exec -T task-manager-backend npm run test:integration
+
+      - name: Docker Compose DOWN
+        if: always()
+        run: docker-compose down --rmi all --volumes --remove-orphans
