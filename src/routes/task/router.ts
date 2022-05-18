@@ -17,5 +17,6 @@ export default class TaskRouter {
     this.router.get('/', this.taskController.getAll);
     this.router.post('/', validateTaskCreate, this.taskController.create);
     this.router.patch('/:id', validateParamsId, validateTaskUpdate, this.taskController.update);
+    this.router.delete('/:id', validateParamsId, this.taskController.exclude);
   }
 }
