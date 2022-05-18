@@ -18,7 +18,7 @@ export default class TaskService {
     return this.prisma.task.create({ data: { content } });
   }
 
-  public async update(id: string, payload: ITaskUpdateRequest): Promise<ITask> {
+  public async update(id: string, payload: ITaskUpdateRequest): Promise<ITask | undefined> {
     const { content, status } = payload;
 
     try {
@@ -29,10 +29,18 @@ export default class TaskService {
 
       return updatedTask;
     } catch (error) {
-      // P2025 is the error code for not found record
-      if (error instanceof PrismaClientKnownRequestError && error.code === 'P2025') {
-        throw new NotFound('task not found');
-      } else throw error;
+      this.dealPrismaError(error);
     }
+  }
+
+  private dealPrismaError(error: any) {
+    const PRISMA_UNKNOWN_RECORD_ERROR_CODE = 'P2025';
+
+    if (
+      error instanceof PrismaClientKnownRequestError
+      && error.code === PRISMA_UNKNOWN_RECORD_ERROR_CODE
+    ) {
+      throw new NotFound('task not found');
+    } else throw error;
   }
 }
