@@ -33,6 +33,14 @@ export default class TaskService {
     }
   }
 
+  public async exclude(id: string): Promise<void> {
+    try {
+      await this.prisma.task.delete({ where: { id } });
+    } catch (error) {
+      this.dealPrismaError(error);
+    }
+  }
+
   private dealPrismaError(error: any) {
     const PRISMA_UNKNOWN_RECORD_ERROR_CODE = 'P2025';
 
