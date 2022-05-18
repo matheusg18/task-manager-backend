@@ -1,10 +1,6 @@
-name: Push backend Docker Image to DockerHub
+name: Push BackEnd Docker Image to DockerHub
 
 on:
-  pull_request:
-    types: closed
-    branches:
-      - main
   push:
     branchs:
       - main
