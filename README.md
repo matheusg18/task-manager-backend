@@ -1,4 +1,4 @@
-# task-manager-backend
+# Ebtyr Task Manager - BackEnd
 
 ## Variáveis de ambiente
 
