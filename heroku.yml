@@ -5,7 +5,7 @@ build:
 release:
   command:
     - npx prisma migrate deploy
-  image: worker
+  image: web
 
 run:
   web: node dist/src/server.js
