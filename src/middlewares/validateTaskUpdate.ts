@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express';
 import joi from 'joi';
-import { TASK_CONTENT_MAX_LENGTH } from '../constants';
+import { TASK_CONTENT_MAX_LENGTH, TASK_STATUS } from '../constants';
 import { BadRequest } from '../http-errors';
 import { ITaskUpdateRequest } from '../interfaces';
 
@@ -10,7 +10,7 @@ const schema = joi.object({
     'string.empty': '"content" must have at least 1 character',
     'string.max': `"content" must have at maximum ${TASK_CONTENT_MAX_LENGTH} characters`,
   }),
-  status: joi.valid('PENDING', 'IN_PROGRESS', 'DONE').messages({
+  status: joi.valid(TASK_STATUS.PENDING, TASK_STATUS.IN_PROGRESS, TASK_STATUS.DONE).messages({
     'any.only': '"status" can only be "PENDING", "IN_PROGRESS", "DONE"',
   }),
 });
